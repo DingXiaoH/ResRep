@@ -1,6 +1,6 @@
 # ResRep 
 
-(The paper is being processed on arxiv, and the link and bibtex here are just a placeholders. I will update it tomorrow.) This repo contains the code for [Lossless CNN Channel Pruning via Gradient Resetting and Convolutional Re-parameterization](http://STILL_PROCESSING_ON_ARXIV).
+(The paper is being processed on arxiv, and the link and bibtex here are just placeholders. I will update them tomorrow.) This repo contains the code for [Lossless CNN Channel Pruning via Gradient Resetting and Convolutional Re-parameterization](http://STILL_PROCESSING_ON_ARXIV).
 
 This demo will show you how to
 1. Reproduce 56.1% pruning ratio of ResNet-50 on ImageNet with 8 GPUs without accuracy drop.
