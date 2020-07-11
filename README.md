@@ -13,7 +13,11 @@ About the environment:
 
 Citation:
 
-	@InProceedings{PLACE_HOLDER, WILL BE UPDATED
+	@article{ding2020lossless,
+  	title={Lossless CNN Channel Pruning via Gradient Resetting and Convolutional Re-parameterization},
+  	author={Ding, Xiaohan and Hao, Tianxiang and Liu, Ji and Han, Jungong and Guo, Yuchen and Ding, Guiguang},
+  	journal={arXiv preprint arXiv:2007.03260},
+  	year={2020}
 	}
 
 ## Introduction
@@ -85,7 +89,9 @@ dxh17@mails.tsinghua.edu.cn
 
 Google Scholar Profile: https://scholar.google.com/citations?user=CIjw0KoAAAAJ&hl=en
 
-My open-sourced papers and repos:
+My open-sourced papers and repos: [Lossless CNN Channel Pruning via Gradient Resetting and Convolutional Re-parameterization](https://arxiv.org/abs/2007.03260) (https://github.com/DingXiaoH/ResRep)
+
+State-of-the-art channel pruning (preprint): 
 
 CNN component (ICCV 2019): [ACNet: Strengthening the Kernel Skeletons for Powerful CNN via Asymmetric Convolution Blocks](http://openaccess.thecvf.com/content_ICCV_2019/papers/Ding_ACNet_Strengthening_the_Kernel_Skeletons_for_Powerful_CNN_via_Asymmetric_ICCV_2019_paper.pdf) (https://github.com/DingXiaoH/ACNet)
 
