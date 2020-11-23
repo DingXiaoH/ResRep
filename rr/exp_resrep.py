@@ -86,6 +86,10 @@ if __name__ == '__main__':
         no_l2_keywords = ['depth']
     else:
         no_l2_keywords = ['depth', 'compactor']
+        
+    print('######################################################')
+    print('start ere, the original flops is ', flops_func(deps))
+    print('######################################################')
 
     if not os.path.exists(os.path.join(config.output_dir,  'finish_converted.hdf5')):
         resrep_train_main(local_rank=start_arg.local_rank,
