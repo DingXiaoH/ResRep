@@ -22,7 +22,7 @@ Citation:
 
 ## Introduction
 
-Channel pruning (a.k.a. filter pruning) aims to slim down a convolutional neural network (CNN) by reducing the width (i.e., numbers of output channels) of convolutional layers. However, as CNN's representational capacity depends on the width, doing so tends to degrade the performance. A traditional learning-based channel pruning paradigm applies a penalty on parameters to improve the robustness to pruning, but such a penalty may degrade the performance even before pruning. Inspired by the neurobiology research about the independence of remembering and forgetting, we propose to re-parameterize a CNN into the remembering parts and forgetting parts, where the former learn to maintain the performance and the latter learn for efficiency. By training the re-parameterized model using regular SGD on the former but a novel update rule with penalty gradients on the latter, we achieve structured sparsity, enabling us to equivalently convert the re-parameterized model into the original architecture with narrower layers. With our method, we can slim down a standard ResNet-50 with 76.15\% top-1 accuracy on ImageNet to a narrower one with only 45.5\% FLOPs and no accuracy drop.
+We propose ResRep, a novel method for lossless channel pruning (a.k.a. filter pruning), which aims to slim down a convolutional neural network (CNN) by reducing the width (number of output channels) of convolutional layers. Inspired by the neurobiology research about the independence of remembering and forgetting, we propose to re-parameterize a CNN into the remembering parts and forgetting parts, where the former learn to maintain the performance and the latter learn for efficiency. By training the re-parameterized model using regular SGD on the former but a novel update rule with penalty gradients on the latter, we realize structured sparsity, enabling us to equivalently convert the re-parameterized model into the original architecture with narrower layers. Such a methodology distinguishes ResRep from the traditional learning-based pruning paradigm that applies a penalty on parameters to produce structured sparsity, which may suppress the parameters essential for the remembering. Our method slims down a standard ResNet-50 with 76.15% accuracy on ImageNet to a narrower one with only 45% FLOPs and no accuracy drop, which is the first to achieve lossless pruning with such a high compression ratio, to the best of our knowledge.
 
 ## Prune ResNet-50 on ImageNet with a pruning ratio of 54.5% (FLOPs)
 
@@ -74,7 +74,7 @@ export CUDA_VISIBLE_DEVICES=0
 python train_base_model.py -a src56
 ```
 
-5. Run ResRep. The pruned weights will be saved to "resrep_models/src56_train/finish_converted.hdf5" and automatically tested. You will get a final accuracy of 93.7 ~ 93.8. The results reported in our paper are average of 5 runs.
+5. Run ResRep. The pruned weights will be saved to "resrep_models/src56_train/finish_converted.hdf5" and automatically tested.
 ```
 python rr/exp_resrep.py -a src56
 ```
