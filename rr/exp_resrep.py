@@ -40,7 +40,7 @@ if __name__ == '__main__':
                          linear_final_lr=None, cosine_minimum=0)
         resrep_config = ResRepConfig(target_layers=target_layers, succeeding_strategy=succeeding_strategy,
                                      pacesetter_dict=pacesetter_dict, lasso_strength=1e-4,
-                                     flops_func=flops_func, flops_target=0.439, mask_interval=200,
+                                     flops_func=flops_func, flops_target=0.455, mask_interval=200,
                                      compactor_momentum=0.99, before_mask_iters=5*1281167//batch_size,
                                      begin_granularity=4, weight_decay_on_compactor=False, num_at_least=1)
 
