@@ -23,7 +23,7 @@ def calculate_mi1_flops(deps):
     result.append(1000 * deps[-1])
     return np.sum(np.array(result, dtype=np.float32))
 
-def calculate_resnet_bottleneck_flops(fd, resnet_n):
+def calculate_resnet_bottleneck_flops(fd, resnet_n, original_version=False):
     num_blocks = resnet_n_to_num_blocks[resnet_n]
     d = convert_resnet_bottleneck_deps(fd)
     result = []
@@ -40,24 +40,25 @@ def calculate_resnet_bottleneck_flops(fd, resnet_n):
     # stage 3
     result.append(get_con_flops(last_dep, d[2][0][2], 28, kernel_size=1))
     for i in range(num_blocks[1]):
-        result.append(get_con_flops(last_dep, d[2][i][0], 28, kernel_size=1))
+        result.append(get_con_flops(last_dep, d[2][i][0], 28 if original_version or i > 0 else 56, kernel_size=1))
         result.append(get_con_flops(d[2][i][0], d[2][i][1], 28, kernel_size=3))
         result.append(get_con_flops(d[2][i][1], d[2][i][2], 28, kernel_size=1))
         last_dep = d[2][i][2]
     # stage 4
     result.append(get_con_flops(last_dep, d[3][0][2], 14, kernel_size=1))
     for i in range(num_blocks[2]):
-        result.append(get_con_flops(last_dep, d[3][i][0], 14, kernel_size=1))
+        result.append(get_con_flops(last_dep, d[3][i][0], 14 if original_version or i > 0 else 28, kernel_size=1))
         result.append(get_con_flops(d[3][i][0], d[3][i][1], 14, kernel_size=3))
         result.append(get_con_flops(d[3][i][1], d[3][i][2], 14, kernel_size=1))
         last_dep = d[3][i][2]
     # stage 5
     result.append(get_con_flops(last_dep, d[4][0][2], 7, kernel_size=1))
     for i in range(num_blocks[3]):
-        result.append(get_con_flops(last_dep, d[4][i][0], 7, kernel_size=1))
+        result.append(get_con_flops(last_dep, d[4][i][0], 7 if original_version or i > 0 else 14, kernel_size=1))
         result.append(get_con_flops(d[4][i][0], d[4][i][1], 7, kernel_size=3))
         result.append(get_con_flops(d[4][i][1], d[4][i][2], 7, kernel_size=1))
         last_dep = d[4][i][2]
+
     # fc
     result.append(1000 * last_dep)
     return np.sum(np.array(result, dtype=np.float32))
