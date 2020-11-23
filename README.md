@@ -3,7 +3,7 @@
 **State-of-the-art** channel pruning (a.k.a. filter pruning)! This repo contains the code for [Lossless CNN Channel Pruning via Gradient Resetting and Convolutional Re-parameterization](https://arxiv.org/abs/2007.03260).
 
 This demo will show you how to
-1. Reproduce 56.1% pruning ratio of ResNet-50 on ImageNet with 8 GPUs without accuracy drop.
+1. Reproduce 54.5% pruning ratio of ResNet-50 on ImageNet with 8 GPUs without accuracy drop.
 2. Reproduce 52.9% pruning ratio of ResNet-56 on CIFAR-10 with 1 GPU:
 
 About the environment:
@@ -22,9 +22,9 @@ Citation:
 
 ## Introduction
 
-Channel pruning (a.k.a. filter pruning) aims to slim down a convolutional neural network (CNN) by reducing the width (i.e., numbers of output channels) of convolutional layers. However, as CNN's representational capacity depends on the width, doing so tends to degrade the performance. A traditional learning-based channel pruning paradigm applies a penalty on parameters to improve the robustness to pruning, but such a penalty may degrade the performance even before pruning. Inspired by the neurobiology research about the independence of remembering and forgetting, we propose to re-parameterize a CNN into the remembering parts and forgetting parts, where the former learn to maintain the performance and the latter learn for efficiency. By training the re-parameterized model using regular SGD on the former but a novel update rule with penalty gradients on the latter, we achieve structured sparsity, enabling us to equivalently convert the re-parameterized model into the original architecture with narrower layers. With our method, we can slim down a standard ResNet-50 with 76.15\% top-1 accuracy on ImageNet to a narrower one with only 43.9\% FLOPs and no accuracy drop.
+Channel pruning (a.k.a. filter pruning) aims to slim down a convolutional neural network (CNN) by reducing the width (i.e., numbers of output channels) of convolutional layers. However, as CNN's representational capacity depends on the width, doing so tends to degrade the performance. A traditional learning-based channel pruning paradigm applies a penalty on parameters to improve the robustness to pruning, but such a penalty may degrade the performance even before pruning. Inspired by the neurobiology research about the independence of remembering and forgetting, we propose to re-parameterize a CNN into the remembering parts and forgetting parts, where the former learn to maintain the performance and the latter learn for efficiency. By training the re-parameterized model using regular SGD on the former but a novel update rule with penalty gradients on the latter, we achieve structured sparsity, enabling us to equivalently convert the re-parameterized model into the original architecture with narrower layers. With our method, we can slim down a standard ResNet-50 with 76.15\% top-1 accuracy on ImageNet to a narrower one with only 45.5\% FLOPs and no accuracy drop.
 
-## Prune ResNet-50 on ImageNet with a pruning ratio of 56.1% (FLOPs)
+## Prune ResNet-50 on ImageNet with a pruning ratio of 54.5% (FLOPs)
 
 1. Enter this directory.
 
