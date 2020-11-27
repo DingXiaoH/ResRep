@@ -1,6 +1,6 @@
 # ResRep 
 
-**State-of-the-art** channel pruning (a.k.a. filter pruning)! This repo contains the code for [Lossless CNN Channel Pruning via Gradient Resetting and Convolutional Re-parameterization](https://arxiv.org/abs/2007.03260).
+**State-of-the-art** channel pruning (a.k.a. filter pruning)! This repo contains the code for [Lossless CNN Channel Pruning via Decoupling Remembering and Forgetting](https://arxiv.org/abs/2007.03260).
 
 This demo will show you how to
 1. Reproduce 54.5% pruning ratio of ResNet-50 on ImageNet with 8 GPUs without accuracy drop.
@@ -14,7 +14,7 @@ About the environment:
 Citation:
 
 	@article{ding2020lossless,
-  	title={Lossless CNN Channel Pruning via Gradient Resetting and Convolutional Re-parameterization},
+  	title={Lossless CNN Channel Pruning via Decoupling Remembering and Forgetting},
   	author={Ding, Xiaohan and Hao, Tianxiang and Liu, Ji and Han, Jungong and Guo, Yuchen and Ding, Guiguang},
   	journal={arXiv preprint arXiv:2007.03260},
   	year={2020}
@@ -91,7 +91,7 @@ Google Scholar Profile: https://scholar.google.com/citations?user=CIjw0KoAAAAJ&h
 
 My open-sourced papers and repos: 
 
-**State-of-the-art** channel pruning (preprint, 2020): [Lossless CNN Channel Pruning via Gradient Resetting and Convolutional Re-parameterization](https://arxiv.org/abs/2007.03260) (https://github.com/DingXiaoH/ResRep)
+**State-of-the-art** channel pruning (preprint, 2020): [Lossless CNN Channel Pruning via Decoupling Remembering and Forgetting](https://arxiv.org/abs/2007.03260) (https://github.com/DingXiaoH/ResRep)
 
 CNN component (ICCV 2019): [ACNet: Strengthening the Kernel Skeletons for Powerful CNN via Asymmetric Convolution Blocks](http://openaccess.thecvf.com/content_ICCV_2019/papers/Ding_ACNet_Strengthening_the_Kernel_Skeletons_for_Powerful_CNN_via_Asymmetric_ICCV_2019_paper.pdf) (https://github.com/DingXiaoH/ACNet)
 
