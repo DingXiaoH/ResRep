@@ -1,6 +1,10 @@
-# ResRep 
+# ResRep (ICCV 2021) 
 
 **State-of-the-art** channel pruning (a.k.a. filter pruning)! This repo contains the code for [Lossless CNN Channel Pruning via Decoupling Remembering and Forgetting](https://arxiv.org/abs/2007.03260).
+
+Update: accepted to **ICCV 2021**!
+
+Update: released the log of the 54.5%-pruned ResNet-50 as kindly requested by several readers.
 
 This demo will show you how to
 1. Reproduce 54.5% pruning ratio of ResNet-50 on ImageNet with 8 GPUs without accuracy drop.
