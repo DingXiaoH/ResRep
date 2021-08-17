@@ -4,7 +4,7 @@
 
 Update: accepted to **ICCV 2021**!
 
-Update: released the log of the 54.5%-pruned ResNet-50 as kindly requested by several readers.
+Update: released the log of the 54.5%-pruned ResNet-50 as kindly requested by several readers. (The experiments were done 15 months ago and the results are still SOTA.)
 
 This demo will show you how to
 1. Reproduce 54.5% pruning ratio of ResNet-50 on ImageNet with 8 GPUs without accuracy drop.
