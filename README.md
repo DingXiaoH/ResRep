@@ -99,7 +99,8 @@ First, let's clarify the meanings of some architecutre-specific constants and fu
 RESNET50_ORIGIN_DEPS_FLATTENED = [64,256,64,64,256,64,64,256,64,64,256,512,128,128,512,128,128,512,128,128,512,128,128,512,
                                   1024,256, 256, 1024,256, 256, 1024,256, 256, 1024,256, 256, 1024,256, 256, 1024,256, 256, 1024,
                                   2048,512, 512, 2048,512, 512, 2048,512, 512, 2048]
-``` Note that we build the projection (1x1 conv shortcut) layer before the parallel residual block (L61 in stagewise_resnet.py), so that its width (256) preceds the widths of the three layers of the residual block (64, 64, 256).
+```
+Note that we build the projection (1x1 conv shortcut) layer before the parallel residual block (L61 in stagewise_resnet.py), so that its width (256) preceds the widths of the three layers of the residual block (64, 64, 256).
 2. ```calculate_SOME_MODEL_flops```, the function to calculate the FLOPs of a specific architecuture given the "deps". It is architecture-specific. You may follow ```calculate_resnet_bottleneck_flops``` in '''resrep_scripts.py''' to define it for your own model.
 3. ```succeeding_strategy``` defines how the layers follow others. If layer B follows layer A (i.e., pruning the output channels of layer A triggers the removal of the corresponding input channels of layer B), we should have succeeding_strategy\[A\]=B. This is the common case of simple models. For example, the succeeding_strategy of VGG-16 should be \{0:1, 1:2, 2:3, ...\}. 
 
