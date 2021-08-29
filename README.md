@@ -92,7 +92,7 @@ python display_hdf5.py resrep_models/src56_train/finish_converted.hdf5
 
 ***Pruning simple models or easy-to-prune layers in a complicated model***
 
-First, let's clarify the meanings of some architecutre-specific constants and functions I defined for the pruning process.
+First, let's clarify the meanings of some architecutre-specific constants and functions defined for the pruning process.
 
 1. ```deps```, the width of every conv layer is defined by an array named "deps". For example,
 ```
@@ -100,11 +100,11 @@ RESNET50_ORIGIN_DEPS_FLATTENED = [64,256,64,64,256,64,64,256,64,64,256,512,128,1
                                   1024,256, 256, 1024,256, 256, 1024,256, 256, 1024,256, 256, 1024,256, 256, 1024,256, 256, 1024,
                                   2048,512, 512, 2048,512, 512, 2048,512, 512, 2048]
 ```
-Note that we build the projection (1x1 conv shortcut) layer before the parallel residual block (L61 in stagewise_resnet.py), so that its width (256) preceds the widths of the three layers of the residual block (64, 64, 256).
+Note that we build the projection (1x1 conv shortcut) layer before the parallel residual block (L61 in ```stagewise_resnet.py```), so that its width (256) preceds the widths of the three layers of the residual block (64, 64, 256).
 
-2. ```calculate_SOME_MODEL_flops```, the function to calculate the FLOPs of a specific architecuture given the "deps". It is architecture-specific. You may follow ```calculate_resnet_bottleneck_flops``` in '''resrep_scripts.py''' to define it for your own model.
+2. ```calculate_SOME_MODEL_flops```, the function to calculate the FLOPs of a specific architecuture given the "deps". It is architecture-specific. You may follow ```calculate_resnet_bottleneck_flops``` in ```resrep_scripts.py``` to define it for your own model.
 
-3. ```succeeding_strategy``` defines how the layers follow others. If layer B follows layer A (i.e., pruning the output channels of layer A triggers the removal of the corresponding input channels of layer B), we should have succeeding_strategy\[A\]=B. This is the common case of simple models. For example, the succeeding_strategy of VGG-16 should be \{0:1, 1:2, 2:3, ...\}. 
+3. ```succeeding_strategy``` defines how the layers follow others. If layer B follows layer A (i.e., pruning the output channels of layer A triggers the removal of the corresponding input channels of layer B), we should have ```succeeding_strategy\[A\]=B```. This is the common case of simple models. For example, the succeeding_strategy of VGG-16 should be ```\{0:1, 1:2, 2:3, ...\}```. 
 
 However, some layers in some complicated models are a bit tricky to prune. In the experiments reported in the paper, we only pruned the internal layers of ResNets (i.e., the first layer of every res block of Res56 and the first two layers of every res block of Res50) but did not prune the tricky layers. You may skip the following content if you do not intend to prune those layers.
 
@@ -114,8 +114,8 @@ However, some layers in some complicated models are a bit tricky to prune. In th
 
 5. ```follow_dict``'. Some layers must be pruned following others (e.g., the last layers of every res block in a stage must be pruned following the projection layer of the stage). If layer A must be pruned following layer B, we define ```follow_dict\[A\]=B``'. We did not use it in our experiments because there are no such constraints if we only prune the internal layers. We discussed this problem in a CVPR-2019 paper [C-SGD](https://openaccess.thecvf.com/content_CVPR_2019/papers/Ding_Centripetal_SGD_for_Pruning_Very_Deep_Convolutional_Networks_With_Complicated_CVPR_2019_paper.pdf).
 
-The above-mentioned constants are inputs to ```compactor_convert```, which is a generic method for pruning and converting a model with compactors. However, given a specific architecture, instead of figuring out how they should be defined, writing your own pruning function may be easier. ``compactor_convert_mi1``` is an example for pruning MobileNet-V1. The keys are:
-1. Figuring out how the layers connect to the others. After pruning a layer, prune the input channels of every following layer correctly.
+The above-mentioned constants are inputs to ```compactor_convert```, which is a generic method for pruning and converting a model with compactors. However, given a specific architecture, compared to figuring out how such constants should be defined, writing a standalone pruning function for your architecture may be easier. ``compactor_convert_mi1``` is an example for pruning MobileNet-V1. You need to
+1. Figure out how the layers connect to the others. After pruning a layer, prune the input channels of its every following layer correctly.
 2. If some layers must be pruned following others, do that correctly.
 3. Handle the depth-wise layers, BN and other custom layers correctly.
 
@@ -136,7 +136,7 @@ The **Structural Re-parameterization Universe**:
 [RepVGG: Making VGG-style ConvNets Great Again](https://arxiv.org/abs/2101.03697)\
 [code](https://github.com/DingXiaoH/RepVGG).
 
-3. (preprint, 2020) **State-of-the-art** channel pruning\
+3. (ICCV, 2021) **State-of-the-art** channel pruning\
 [Lossless CNN Channel Pruning via Decoupling Remembering and Forgetting](https://arxiv.org/abs/2007.03260)\
 [code](https://github.com/DingXiaoH/ResRep).
 
