@@ -1,6 +1,6 @@
 # ResRep (ICCV 2021) 
 
-**State-of-the-art** channel pruning (a.k.a. filter pruning)! This repo contains the code for [Lossless CNN Channel Pruning via Decoupling Remembering and Forgetting](https://arxiv.org/abs/2007.03260).
+**State-of-the-art** channel pruning (a.k.a. filter pruning)! This repo contains the code for [ResRep: Lossless CNN Pruning via Decoupling Remembering and Forgetting](https://openaccess.thecvf.com/content/ICCV2021/papers/Ding_ResRep_Lossless_CNN_Pruning_via_Decoupling_Remembering_and_Forgetting_ICCV_2021_paper.pdf).
 
 Update: accepted to **ICCV 2021**!
 
@@ -17,11 +17,12 @@ About the environment:
 
 Citation:
 
-	@article{ding2020lossless,
-  	title={Lossless CNN Channel Pruning via Decoupling Remembering and Forgetting},
-  	author={Ding, Xiaohan and Hao, Tianxiang and Liu, Ji and Han, Jungong and Guo, Yuchen and Ding, Guiguang},
-  	journal={arXiv preprint arXiv:2007.03260},
-  	year={2020}
+	@inproceedings{ding2021resrep,
+  	title={ResRep: Lossless CNN Pruning via Decoupling Remembering and Forgetting},
+  	author={Ding, Xiaohan and Hao, Tianxiang and Tan, Jianchao and Liu, Ji and Han, Jungong and Guo, Yuchen and Ding, Guiguang},
+  	booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  	pages={4510--4520},
+  	year={2021}
 	}
 
 ## Introduction
