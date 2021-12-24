@@ -2,6 +2,8 @@
 
 **State-of-the-art** channel pruning (a.k.a. filter pruning)! This repo contains the code for [ResRep: Lossless CNN Pruning via Decoupling Remembering and Forgetting](https://openaccess.thecvf.com/content/ICCV2021/papers/Ding_ResRep_Lossless_CNN_Pruning_via_Decoupling_Remembering_and_Forgetting_ICCV_2021_paper.pdf).
 
+Update (Dec 24, 2021): working to remove the hdf5-related code and use pth file only. That would improve the readability.
+
 Update: accepted to **ICCV 2021**!
 
 Update: released the log of the 54.5%-pruned ResNet-50 as kindly requested by several readers. (The experiments were done 15 months ago and the results are still SOTA.)
