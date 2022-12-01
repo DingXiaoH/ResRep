@@ -84,7 +84,7 @@ class ConvBuilder(nn.Module):
         result = self.Sequential()
         result.add_module('conv', conv)
         result.add_module('relu', self.ReLU())
-        return conv
+        return result
 
     def BNReLUConv2d(self, in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, padding_mode='zeros', use_original_conv=False):
         bn_layer = self.BatchNorm2d(num_features=in_channels)
